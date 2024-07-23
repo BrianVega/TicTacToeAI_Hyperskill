@@ -49,13 +49,23 @@ The project is organized into the following packages and classes:
 3. To start a game, enter the command `start <difficulty1> <difficulty2>`, where `<difficulty1>` and `<difficulty2>` can be `easy`, `medium`, `hard`, or `user`.
 4. The game will display the board and alternate turns between players until there is a winner or a draw.
 
-### Example Input
+### Example Input for start command
 
   ```bash
     start easy medium  
   ```
 
 This command starts a game between a player with easy difficulty and a player with medium difficulty.
+
+### Example Input for User-Set difficulty
+
+  ```bash
+    1 1  
+  ```
+#### This command represents how the user can play its turn, the format is the following: 
+  ```bash
+    <NumberOfRow> <NumberOfColumn>  
+  ```
 
 ### Exiting the Game
 
