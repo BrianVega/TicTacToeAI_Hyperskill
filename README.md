@@ -40,6 +40,23 @@ The project is organized into the following packages and classes:
 - **Player:** Abstract class that defines player behavior.
 - **Difficulty:** Interface that defines the behavior of different difficulty levels.
 
+## Heuristics for Difficulty Levels
+
+### Easy Difficulty
+- **Heuristic**: Random Move
+- **Description**: The computer makes a move by randomly selecting an empty cell on the board. There is no strategic evaluation or consideration of the game state.
+
+### Medium Difficulty
+- **Heuristic**: Basic Line Analysis
+- **Description**: The computer evaluates the board to make a move based on the following priorities:
+  1. **Win**: If there are two of the computer's symbols in a line (row, column, or diagonal) and one empty cell, complete the line to win.
+  2. **Block**: If the opponent has two symbols in a line and one empty cell, block the opponent by placing a symbol in the empty cell.
+  3. **Random Move**: If neither of the above conditions is met, make a random move in an empty cell.
+
+### Hard Difficulty
+- **Heuristic**: Minimax Algorithm with Alpha-Beta Pruning
+- **Description**: The computer uses the Minimax algorithm to evaluate the best possible move by simulating all possible future moves and their outcomes. The algorithm aims to maximize the computer's chances of winning while minimizing the opponent's chances. Alpha-beta pruning is used to optimize the evaluation by eliminating branches in the search tree that do not need to be explored. If the board is empty, the computer makes a random move. If the board is not empty, the computer uses the Minimax algorithm to choose the optimal move.
+
 ## Usage
 
 ### Starting the Game
