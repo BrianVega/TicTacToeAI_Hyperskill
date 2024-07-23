@@ -1,10 +1,10 @@
 package org.example;
 
 import org.example.Interfaces.Player;
-import org.example.Models.Difficulties.*;
-import org.example.Models.Enums.Difficulties;
-import org.example.Models.Enums.Players;
-import org.example.Models.Players.PlayersFactory;
+import org.example.ai.Difficulties.*;
+import org.example.ai.Enums.Difficulties;
+import org.example.ai.Enums.Players;
+import org.example.ai.Players.PlayersFactory;
 import java.util.*;
 import java.util.regex.Pattern;
 import static org.example.Utils.*;

@@ -1,8 +1,8 @@
-package org.example.Models.Players;
+package org.example.ai.Players;
 
 import org.example.Interfaces.Difficulty;
 import org.example.Interfaces.Player;
-import org.example.Models.Enums.Players;
+import org.example.ai.Enums.Players;
 
 public class PlayersFactory {
 

@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.Models.Enums.*;
+import org.example.ai.Enums.*;
 
 public class Utils {
 

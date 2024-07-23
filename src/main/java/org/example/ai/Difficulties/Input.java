@@ -1,10 +1,10 @@
-package org.example.Models.Difficulties;
+package org.example.ai.Difficulties;
 
 import org.example.Board;
 import org.example.Game;
 import org.example.Interfaces.Player;
 import org.example.Interfaces.Difficulty;
-import org.example.Models.Enums.Difficulties;
+import org.example.ai.Enums.Difficulties;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -34,7 +34,7 @@ public class Input implements Difficulty {
                 row = Integer.parseInt(coordinates.split(" ")[0]) - 1;
                 col = Integer.parseInt(coordinates.split(" ")[1]) - 1;
                 if (row < 0 || row > 2 || col < 0 || col > 2) {
-                    System.out.println("Coordinates should be from 1 to 3!");
+                    System.out.println("Coordinates should be farom 1 to 3!");
                     row = 0;
                     col = 0;
                 } else if (board.getCell(row, col) != null) {

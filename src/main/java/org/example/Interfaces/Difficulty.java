@@ -1,7 +1,7 @@
 package org.example.Interfaces;
 
 import org.example.Game;
-import org.example.Models.Enums.Difficulties;
+import org.example.ai.Enums.Difficulties;
 
 public interface Difficulty {
 

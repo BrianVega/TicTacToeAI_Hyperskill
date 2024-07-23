@@ -1,10 +1,10 @@
-package org.example.Models.Difficulties;
+package org.example.ai.Difficulties;
 
 import org.example.Board;
 import org.example.Game;
 import org.example.Interfaces.Difficulty;
 import org.example.Interfaces.Player;
-import org.example.Models.Enums.Difficulties;
+import org.example.ai.Enums.Difficulties;
 
 
 public class Hard implements Difficulty {

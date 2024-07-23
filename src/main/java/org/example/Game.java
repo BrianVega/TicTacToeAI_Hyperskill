@@ -1,7 +1,7 @@
 package org.example;
 
 import org.example.Interfaces.Player;
-import org.example.Models.Enums.Difficulties;
+import org.example.ai.Enums.Difficulties;
 
 public class Game {
     private Board board;

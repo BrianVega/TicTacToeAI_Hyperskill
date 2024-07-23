@@ -1,4 +1,4 @@
-package org.example.Models.Players;
+package org.example.ai.Players;
 
 import org.example.Game;
 import org.example.Interfaces.Difficulty;

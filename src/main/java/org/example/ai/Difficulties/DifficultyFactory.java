@@ -1,7 +1,7 @@
-package org.example.Models.Difficulties;
+package org.example.ai.Difficulties;
 
 import org.example.Interfaces.Difficulty;
-import org.example.Models.Enums.Difficulties;
+import org.example.ai.Enums.Difficulties;
 
 public class DifficultyFactory {
 
