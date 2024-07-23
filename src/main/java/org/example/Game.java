@@ -8,6 +8,9 @@ public class Game {
     private Player player1;
     private Player player2;
 
+    private final String GAME_NOT_FINISHED_STATUS = "Game not finished";
+    private final String DRAW_STATUS = "Draw";
+
     Game(Board board, Player player1, Player player2) {
         this.board = board;
         this.player1 = player1;
@@ -77,9 +80,9 @@ public class Game {
         hasEmptyCells = board.getEmptyCells() > 0;
         if (hasEmptyCells) {
             status.setStillPlaying(true);
-            status.setStatus("Game not finished");
+            status.setStatus(GAME_NOT_FINISHED_STATUS);
         } else {
-            status.setStatus("Draw");
+            status.setStatus(DRAW_STATUS);
         }
         return status;
     }
