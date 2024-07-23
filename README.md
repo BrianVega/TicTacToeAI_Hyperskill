@@ -1,5 +1,25 @@
 # Tic-Tac-Toe Game
 
+## Table of Contents
+
+1. [Description](#description)
+2. [Project Structure](#project-structure)
+   - [Package `org.example`](#package-orgexample)
+   - [Package `org.example.Models.Enums`](#package-orgexamplemodelsenums)
+   - [Package `org.example.Models.Players`](#package-orgexamplemodelsplayers)
+   - [Package `org.example.Models.Difficulties`](#package-orgexamplemodelsdifficulties)
+   - [Package `org.example.Interfaces`](#package-orgexampleinterfaces)
+3. [Heuristics for Difficulty Levels](#heuristics-for-difficulty-levels)
+   - [Easy Difficulty](#easy-difficulty)
+   - [Medium Difficulty](#medium-difficulty)
+   - [Hard Difficulty](#hard-difficulty)
+4. [Usage](#usage)
+   - [Starting the Game](#starting-the-game)
+   - [Example Input for start command](#example-input-for-start-command)
+   - [Example Input for User-Set difficulty](#example-input-for-user-set-difficulty)
+   - [Exiting the Game](#exiting-the-game)
+5. [Requirements](#requirements)
+   
 ## Description
 
 This project implements a Tic-Tac-Toe game with different difficulty levels and options to play against the computer or another user. The game is designed to run in the console and provides an interactive gaming experience.
