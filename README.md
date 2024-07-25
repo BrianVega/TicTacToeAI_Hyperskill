@@ -19,6 +19,10 @@
    - [Example Input for User-Set difficulty](#example-input-for-user-set-difficulty)
    - [Exiting the Game](#exiting-the-game)
 5. [Requirements](#requirements)
+6. [Maven Wrapper implementation](#maven-wrapper-implementation)
+   - [What is Maven Wrapper?](#what-is-maven-wrapper)
+   - [Why to use it?](#why-to-use-it)
+   - [Maven Wrapper in the project](#maven-wrapper-in-the-project)
    
 ## Description
 
@@ -112,3 +116,14 @@ Enter the command `exit` to exit the game.
 
 - Java 8 or higher
 - IDE or text editor of your choice
+
+## Maven Wrapper implementation
+### What is Maven Wrapper?
+Maven Wrapper is an excellent choice for projects that need a specific version of maven or for users that don't want to install Maven at all. 
+Maven Wrapper basically downloads the correct Maven version if it is not found.
+### Why to use it?
+- Consistency: Ensures that all the developers use the same Maven Version.
+- Ease of use: No need to install Maven on every developer's machine.
+- Portability: Makes it easier to set up de CI/CD pipelines as the exact Maven version is specified of the application.
+### Maven Wrapper in the project
+Maven Wrapper has been just integrated into the project. Changes can be visualized since the following commit: [_**`409260e`**_](https://github.com/BrianVega/TicTacToeAI_Hyperskill/commit/4daf8deefbbd052d17115b6675955f9f73fdd369)
