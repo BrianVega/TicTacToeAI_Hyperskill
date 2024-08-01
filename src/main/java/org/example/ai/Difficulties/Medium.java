@@ -43,20 +43,18 @@ public class Medium implements Difficulty {
         for(int idx = 0; idx < board.getRowsBoard(); idx++){
             String currentIdx = String.valueOf(idx);
             //Horizontal
-            if(mediumGameMove(board, new String[]{currentIdx.concat(",0"), currentIdx.concat(",1")
-                    , currentIdx.concat(",2") }, move, fillSpace)){
+            if(mediumGameMove(board, move, fillSpace)){
                 return true;
                 // Vertical
-            } else if(mediumGameMove(board, new String[]{"0,".concat(currentIdx), "1,".concat(currentIdx)
-                    , "2,".concat(currentIdx) }, move, fillSpace)){
+            } else if(mediumGameMove(board, move, fillSpace)){
                 return true;
             }
         }
 
-        if(mediumGameMove(board, new String[]{"0,0", "1,1", "2,2"}, move, fillSpace)){
+        if(mediumGameMove(board, move, fillSpace)){
             return true;
         }else
-            return mediumGameMove(board, new String[]{"0,2", "1,1", "2,0"}, move, fillSpace);
+            return mediumGameMove(board, move, fillSpace);
     }
 
     /**
@@ -64,12 +62,11 @@ public class Medium implements Difficulty {
      *     // Points : Player playing wins = 1 (Max score), Opponent wins = -1(Min score), Tie : 0
      *     // If the player moving can not win, he rather tie than let his opponent win
      * @param board
-     * @param positions
      * @param move
      * @param fillSpaceMove
      * @return whether if the cell was filled or not
      */
-    private static boolean mediumGameMove(Board board, String[] positions, Character move, char fillSpaceMove){
+    private static boolean mediumGameMove(Board board, Character move, char fillSpaceMove){
         String[] winningLines = {"0,0.0,1.0,2 1,0.1,1.1,2 2,0.2,1.2,2",  // Horizontal
                                  "0,0.1,0.2,0 1,0.1,1.1,2 2,0.2,1.2,2",  // Vertical
                                  "0,0.1,1.2,2 0,2.1,1.2,0 0,2.1,1.2,0"}; // Diagonal
