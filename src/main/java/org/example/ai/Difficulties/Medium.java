@@ -32,9 +32,6 @@ public class Medium implements Difficulty {
 
     }
 
-    /**
-     * @param winOrBlock -> {1 : winGame, 2: BlockOpponent}
-     */
     private static boolean mediumMove(Board board, char move, int winOrBlock){
         char fillSpace = move;
         if(winOrBlock == 2){
@@ -57,15 +54,6 @@ public class Medium implements Difficulty {
             return mediumGameMove(board, move, fillSpace);
     }
 
-    /**
-     *     // Terminal states : 3 in a row of move parameter || No more empty cells
-     *     // Points : Player playing wins = 1 (Max score), Opponent wins = -1(Min score), Tie : 0
-     *     // If the player moving can not win, he rather tie than let his opponent win
-     * @param board
-     * @param move
-     * @param fillSpaceMove
-     * @return whether if the cell was filled or not
-     */
     private static boolean mediumGameMove(Board board, Character move, char fillSpaceMove){
         String[] winningLines = {"0,0.0,1.0,2 1,0.1,1.1,2 2,0.2,1.2,2",  // Horizontal
                                  "0,0.1,0.2,0 1,0.1,1.1,2 2,0.2,1.2,2",  // Vertical

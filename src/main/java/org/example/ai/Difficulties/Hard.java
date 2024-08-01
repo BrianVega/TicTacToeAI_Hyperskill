@@ -12,6 +12,7 @@ public class Hard implements Difficulty {
     private static final int MAX_DEPTH = 12;
     private static final int minimizerBestValue = Integer.MAX_VALUE;
     private static final int maximizerBestValue = Integer.MIN_VALUE;
+    private static final int MAX_TOTAL_CELLS = 9;
 
     @Override
     public Difficulties getLevel() {
@@ -21,7 +22,7 @@ public class Hard implements Difficulty {
     @Override
     public void move(Game game, Player player) {
         Board board = game.getBoard();
-        if(board.getEmptyCells() == 9){
+        if(board.getEmptyCells() == MAX_TOTAL_CELLS){
             Easy easy = new Easy();
             easy.move(game, player);
         }else{
@@ -59,7 +60,6 @@ public class Hard implements Difficulty {
         }
         return bestMove;
     }
-
 
     private int miniMax(Game game, int depth, int wantMaximize, int wantMinimize,
                         boolean maximizeValue, char currentPlayer){
@@ -120,10 +120,6 @@ public class Hard implements Difficulty {
         }
     }
 
-    /**
-     * @param game Current Game
-     * @return
-     */
     private static int evaluateBoard(Game game, char currentPlayer, char currentOpponent){
 
         String currentBoardValue = game.gameResult().getStatus();

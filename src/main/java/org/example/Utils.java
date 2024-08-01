@@ -1,10 +1,11 @@
 package org.example;
 
-import org.example.ai.Enums.*;
+import org.example.ai.Enums.Difficulties;
+import org.example.ai.Enums.Players;
 
 public class Utils {
 
-    static Difficulties getDifficultyFrom(String difficulty){
+    static Difficulties getDifficultyFrom(String difficulty) {
         if(difficulty.equalsIgnoreCase(Difficulties.EASY.name())){
             return Difficulties.EASY;
         } else if(difficulty.equalsIgnoreCase(Difficulties.MEDIUM.name())){

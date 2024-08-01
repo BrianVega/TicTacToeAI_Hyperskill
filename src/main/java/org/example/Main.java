@@ -1,16 +1,19 @@
 package org.example;
 
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.regex.Pattern;
 import org.example.Interfaces.Player;
-import org.example.ai.Difficulties.*;
+import org.example.ai.Difficulties.DifficultyFactory;
 import org.example.ai.Enums.Difficulties;
 import org.example.ai.Enums.Players;
 import org.example.ai.Players.PlayersFactory;
-import java.util.*;
-import java.util.regex.Pattern;
-import static org.example.Utils.*;
+import static org.example.Utils.getDifficultyFrom;
+import static org.example.Utils.getPlayerFrom;
 
 public class Main {
     static final Scanner SCANNER = new Scanner(System.in);
+    static final int maxUserParametersLength = 3;
 
     private static void starter() {
         final Pattern PARAMETER_INPUT_PATTERN = Pattern.compile("^start\\s[a-zA-Z]+\\s[a-zA-Z]+$");
@@ -18,7 +21,7 @@ public class Main {
         do{
             opc = SCANNER.nextLine().trim().toLowerCase();
             if(PARAMETER_INPUT_PATTERN.matcher(opc).matches()){
-                String[] parameters = Arrays.stream(opc.split(" "), 1, 3)
+                String[] parameters = Arrays.stream(opc.split(" "), 1, maxUserParametersLength)
                         .toArray(String[]::new);
 
                 Difficulties difficultyType1 = getDifficultyFrom(parameters[0]);

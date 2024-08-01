@@ -1,12 +1,11 @@
 package org.example.ai.Difficulties;
 
+import java.util.Random;
 import org.example.Board;
 import org.example.Game;
 import org.example.Interfaces.Difficulty;
 import org.example.Interfaces.Player;
 import org.example.ai.Enums.Difficulties;
-
-import java.util.Random;
 
 public class Easy implements Difficulty {
     private final Difficulties level = Difficulties.EASY;

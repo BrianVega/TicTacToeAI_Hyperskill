@@ -18,14 +18,6 @@ public class Board {
         board[row][col] = value;
     }
 
-    public Character[][] getBoard() {
-        return board;
-    }
-
-    public void resetBoard() {
-        board = new Character[3][3];
-    }
-
     public int getRowsBoard() {
         return ROWS_BOARD;
     }

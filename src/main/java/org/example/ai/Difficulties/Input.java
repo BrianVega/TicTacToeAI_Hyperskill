@@ -1,18 +1,19 @@
 package org.example.ai.Difficulties;
 
-import org.example.Board;
-import org.example.Game;
-import org.example.Interfaces.Player;
-import org.example.Interfaces.Difficulty;
-import org.example.ai.Enums.Difficulties;
-
 import java.util.Scanner;
 import java.util.regex.Pattern;
+import org.example.Board;
+import org.example.Game;
+import org.example.Interfaces.Difficulty;
+import org.example.Interfaces.Player;
+import org.example.ai.Enums.Difficulties;
+
+
 
 public class Input implements Difficulty {
     private Difficulties level = Difficulties.INPUT;
     final Scanner SCANNER = new Scanner(System.in);
-    final static Pattern GAME_INPUT_PATTERN = Pattern.compile("^[0-9]{1}\\s[0-9]{1}$");
+    final Pattern GAME_INPUT_PATTERN = Pattern.compile("^[0-9]{1}\\s[0-9]{1}$");
 
     @Override
     public Difficulties getLevel() {
