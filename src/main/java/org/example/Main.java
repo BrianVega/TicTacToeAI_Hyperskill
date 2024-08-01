@@ -8,8 +8,6 @@ import org.example.ai.Difficulties.DifficultyFactory;
 import org.example.ai.Enums.Difficulties;
 import org.example.ai.Enums.Players;
 import org.example.ai.Players.PlayersFactory;
-import static org.example.Utils.getDifficultyFrom;
-import static org.example.Utils.getPlayerFrom;
 
 public class Main {
     static final Scanner SCANNER = new Scanner(System.in);
@@ -24,10 +22,10 @@ public class Main {
                 String[] parameters = Arrays.stream(opc.split(" "), 1, maxUserParametersLength)
                         .toArray(String[]::new);
 
-                Difficulties difficultyType1 = getDifficultyFrom(parameters[0]);
-                Difficulties difficultyType2 = getDifficultyFrom(parameters[1]);
-                Players playerType1 = getPlayerFrom(parameters[0]);
-                Players playerType2 = getPlayerFrom(parameters[1]);
+                Difficulties difficultyType1 = Utils.getDifficultyFrom(parameters[0]);
+                Difficulties difficultyType2 = Utils.getDifficultyFrom(parameters[1]);
+                Players playerType1 = Utils.getPlayerFrom(parameters[0]);
+                Players playerType2 = Utils.getPlayerFrom(parameters[1]);
 
                 boolean validParametersChecked = difficultyType1 != null && difficultyType2 != null
                         && playerType1 != null && playerType2 != null;

@@ -38,7 +38,6 @@ public class Medium implements Difficulty {
             fillSpace = fillSpace == 'X' ? 'O' : 'X';
         }
         for(int idx = 0; idx < board.getRowsBoard(); idx++){
-            String currentIdx = String.valueOf(idx);
             //Horizontal
             if(mediumGameMove(board, move, fillSpace)){
                 return true;
