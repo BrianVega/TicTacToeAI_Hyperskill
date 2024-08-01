@@ -8,8 +8,8 @@ public class Game {
     private Player player1;
     private Player player2;
 
-    private final String GAME_NOT_FINISHED_STATUS = "Game not finished";
-    private final String DRAW_STATUS = "Draw";
+    private static final String GAME_NOT_FINISHED_STATUS = "Game not finished";
+    private static final String DRAW_STATUS = "Draw";
 
     Game(Board board, Player player1, Player player2) {
         this.board = board;
@@ -39,6 +39,8 @@ public class Game {
                     break;
                 case HARD:
                     System.out.println("Making move level \"hard\"");
+                    break;
+                default:
                     break;
             }
 

@@ -3,11 +3,11 @@ package org.example;
 
 public class Board {
     private static Character[][] board;
-    private final int ROWS_BOARD = 3;
-    private final int COLS_BOARD = 3;
+    private static final int ROWS_BOARD = 3;
+    private static final int COLS_BOARD = 3;
 
     public Board() {
-        board = new Character[ROWS_BOARD][COLS_BOARD];
+        Board.board = new Character[ROWS_BOARD][COLS_BOARD];
     }
 
     public Character getCell(int row, int col) {
