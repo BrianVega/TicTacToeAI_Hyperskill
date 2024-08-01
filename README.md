@@ -23,7 +23,13 @@
    - [What is Maven Wrapper?](#what-is-maven-wrapper)
    - [Why to use it?](#why-to-use-it)
    - [Maven Wrapper in the project](#maven-wrapper-in-the-project)
-   
+7. [Static Code Analysis](#static-code-analysis)
+   - [What is Static Code Analysis?](#what-is-the-static-code-analysis)
+   - [Why to use it?](#why-to-use-it-1)
+   - [PMD in the project](#pmd-in-the-project)
+   - [CheckStyle in the project](#checkstyle-in-the-project)
+   - [SpotBugs in the project](#spotbugs-in-the-project)
+  
 ## Description
 
 This project implements a Tic-Tac-Toe game with different difficulty levels and options to play against the computer or another user. The game is designed to run in the console and provides an interactive gaming experience.
@@ -127,3 +133,42 @@ Maven Wrapper basically downloads the correct Maven version if it is not found.
 - Portability: Makes it easier to set up de CI/CD pipelines as the exact Maven version is specified of the application.
 ### Maven Wrapper in the project
 Maven Wrapper has been just integrated into the project. Changes can be visualized since the following commit: [_**`409260e`**_](https://github.com/BrianVega/TicTacToeAI_Hyperskill/commit/4daf8deefbbd052d17115b6675955f9f73fdd369)
+
+## Static Code Analysis
+### What is the Static Code Analysis?
+Is a method of computer program debugging that is done by examining the code without executing the program.
+Basically the process provides an understanding of the code structure so that can help to ensure that the code adheres to industry standards.
+Among all the static code analysis available nowadays we can find:
+- **PMD**: It helps to find common programming flaws like unused variables, empty catch blocks, unnecessary object creation and so forth.  
+- **CheckStyle**: It helps to identify whether if Java source code is compliant with specified coding rules. 
+- **SpotBugs**: It looks for instances of "bug patterns". It means, code instances that are likely ro be errors.
+### Why to use it?
+Static Code Analysis helps to identify problems at an early development stage.
+### PMD In the project
+The following commit contains all the plugins and configurations that were added in order to comply with the PMD using requisites. [_**`61de1b7`**_](https://github.com/BrianVega/TicTacToeAI_Hyperskill/commit/61de1b79873d70986f92b917b727aabf575e1edf)
+
+#### Results before refactor
+![img.png](assets/PMDBefore.png)
+#### Results after refactor
+Commit: [_**`f9f703e`**_](https://github.com/BrianVega/TicTacToeAI_Hyperskill/commit/f9f703e289443add276c28f3cb495d7bee808229)
+![img.png](assets/PMDAfter.png)
+
+### CheckStyle in the project
+The following commit contains all the plugins and configurations that were added in order to comply with the CheckStyle using requisites. [_**`9c6e9ed`**_](https://github.com/BrianVega/TicTacToeAI_Hyperskill/commit/9c6e9ed825fba17e423fe0a38eea6277c0403b0f)
+
+#### Results before refactor
+![img.png](assets/checkStyleBefore.png)
+
+#### Results after refactor
+Commit: [_**`1b16da2`**_](https://github.com/BrianVega/TicTacToeAI_Hyperskill/commit/1b16da2677a8fcd82758f7b6e233d6a5cf90d003)
+![img.png](assets/checkStyleAfter.png)
+
+### SpotBugs in the project
+The following commit contains all the plugins and configurations that were added in order to comply with the SpotBugs(including Find Security Bugs) using requisites. [_**`644b840`**_](https://github.com/BrianVega/TicTacToeAI_Hyperskill/commit/644b8407089402da5c43e96ea1ca9046bcc9fefc)
+
+#### Results before refactor
+![img.png](assets/SpotBugsBefore.png)
+
+#### Results after refactor
+Commit: [_**`100d9a7`**_](https://github.com/BrianVega/TicTacToeAI_Hyperskill/commit/100d9a7317b32f66613cc7ed5cf6de5f1fa0814a)
+![img.png](assets/SpotBugsAfter.png)
