@@ -29,6 +29,8 @@
    - [PMD in the project](#pmd-in-the-project)
    - [CheckStyle in the project](#checkstyle-in-the-project)
    - [SpotBugs in the project](#spotbugs-in-the-project)
+8. [Java Code Coverage](#static-code-analysis)
+
   
 ## Description
 
@@ -172,3 +174,7 @@ The following commit contains all the plugins and configurations that were added
 #### Results after refactor
 Commit: [_**`100d9a7`**_](https://github.com/BrianVega/TicTacToeAI_Hyperskill/commit/100d9a7317b32f66613cc7ed5cf6de5f1fa0814a)
 ![img.png](assets/SpotBugsAfter.png)
+
+### Java Code Coverage
+In order to guarantee the code quality, 52 tests were added, covering 97% of the code. Such results can be visualized in the following report generated via the JaCoCo plugin.
+![img.png](assets/jacocoReport.png)
