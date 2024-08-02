@@ -13,7 +13,6 @@ public class Computer extends Player {
 
     @Override
     public void play(Game game) {
-//        difficulty.move(game, this);
         getDifficulty().move(game, this);
     }
 }

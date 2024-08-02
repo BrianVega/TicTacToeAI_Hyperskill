@@ -12,7 +12,7 @@ import org.example.ai.Enums.Difficulties;
 
 public class Input implements Difficulty {
     private Difficulties level = Difficulties.INPUT;
-    final Scanner SCANNER = new Scanner(System.in);
+    Scanner SCANNER = new Scanner(System.in);
     final Pattern GAME_INPUT_PATTERN = Pattern.compile("^[0-9]{1}\\s[0-9]{1}$");
 
     @Override

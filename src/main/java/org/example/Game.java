@@ -89,7 +89,7 @@ public class Game {
         return status;
     }
 
-    private boolean checkLine(Character a, Character b, Character c) {
+    boolean checkLine(Character a, Character b, Character c) {
         return a != null && a.equals(b) && a.equals(c);
     }
 
@@ -97,7 +97,7 @@ public class Game {
         return board;
     }
 
-    private String printWinner(char winner){
+    String printWinner(char winner){
         return winner + " wins";
     }
 

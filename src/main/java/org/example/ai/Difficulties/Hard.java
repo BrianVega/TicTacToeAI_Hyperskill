@@ -33,7 +33,7 @@ public class Hard implements Difficulty {
         }
     }
 
-    private int[] getBestMove(Game game, Player player) {
+    int[] getBestMove(Game game, Player player) {
         Board board = game.getBoard();
         int boardRows = board.getRowsBoard();
         int boardCols = board.getColsBoard();
@@ -61,8 +61,8 @@ public class Hard implements Difficulty {
         return bestMove;
     }
 
-    private int miniMax(Game game, int depth, int wantMaximize, int wantMinimize,
-                        boolean maximizeValue, char currentPlayer){
+    int miniMax(Game game, int depth, int wantMaximize, int wantMinimize,
+                boolean maximizeValue, char currentPlayer){
         Board board = game.getBoard();
 
 
