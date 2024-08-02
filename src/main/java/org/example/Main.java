@@ -10,10 +10,10 @@ import org.example.ai.Enums.Players;
 import org.example.ai.Players.PlayersFactory;
 
 public class Main {
-    static final Scanner SCANNER = new Scanner(System.in);
+    static Scanner SCANNER = new Scanner(System.in);
     static final int maxUserParametersLength = 3;
 
-    private static void starter() {
+    static void starter() {
         final Pattern PARAMETER_INPUT_PATTERN = Pattern.compile("^start\\s[a-zA-Z]+\\s[a-zA-Z]+$");
         String opc;
         do{

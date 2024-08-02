@@ -1,89 +1,127 @@
 package org.example;
 
-import org.example.Interfaces.Player;
-import org.example.ai.Difficulties.DifficultyFactory;
-import org.example.ai.Enums.Difficulties;
-import org.example.ai.Enums.Players;
-import org.example.ai.Players.PlayersFactory;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Scanner;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 
 class MainTest {
 
-    @Mock
-    PlayersFactory playersFactory;
-
-    @Mock
-    DifficultyFactory difficultyFactory;
-
-    @Mock
-    Game game;
-
-    @Mock
-    Player player1;
-
-    @Mock
-    Player player2;
-
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
-
     @Test
-    void testStarterWithValidParameters() {
-        String input = "start easy user\nexit\n";
-        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+    void testStarterWithValidParametersEasyEasy() {
+        final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        String input1 = "start easy easy\nexit\n";
+        ByteArrayInputStream in = new ByteArrayInputStream(input1.getBytes());
         System.setIn(in);
 
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
+        Main.SCANNER = new Scanner(System.in);
+        Main.starter();
 
-        Main.main(new String[]{});
+        System.setOut(new PrintStream(outputStreamCaptor));
 
-        String output = out.toString();
-        assertTrue(output.contains("Making move level \"easy\""));
-
-        System.setIn(System.in);
-        System.setOut(System.out);
+        String output = outputStreamCaptor.toString().trim();
+        assertThat(output).contains("Making move level \"easy\"");
     }
 
     @Test
-    void testStarterWithInvalidParameters() {
-        String input = "start invalid user\nexit\n";
-        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+    void testStarterWithValidParametersMediumHard() {
+        final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        String input1 = "start medium hard\nexit\n";
+        ByteArrayInputStream in = new ByteArrayInputStream(input1.getBytes());
         System.setIn(in);
 
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
+        Main.SCANNER = new Scanner(System.in);
+        Main.starter();
 
-        Main.main(new String[]{});
+        System.setOut(new PrintStream(outputStreamCaptor));
 
-        String output = out.toString();
-        assertTrue(output.contains("Bad parameters!"));
+        String output = outputStreamCaptor.toString().trim();
+        assertThat(output).contains("Making move level \"medium\"");
+        assertThat(output).contains("Making move level \"hard\"");
     }
 
+
     @Test
-    void testExitCommand() {
+    void testStarterWithExit() {
+        final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+
         String input = "exit\n";
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
+        Main.SCANNER = new Scanner(System.in);
+        Main.starter();
 
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        String output = outputStreamCaptor.toString().trim();
+        assertThat(output).isEqualToIgnoringCase("");
+    }
+
+    @Test
+    void testStarterWithInvalidParameters() {
+        final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        String input = "start invalid user\nexit\n";
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        Main.SCANNER = new Scanner(System.in);
+        Main.starter();
+
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        String output = outputStreamCaptor.toString().trim();
+        assertThat(output).isEqualToIgnoringCase("Bad parameters!");
+
+    }
+
+    @Test
+    void testStarterWithInvalidStartParameter() {
+        final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        String input = "invalid easy user\nexit\n";
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        Main.SCANNER = new Scanner(System.in);
+        Main.starter();
+
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        String output = outputStreamCaptor.toString().trim();
+        assertThat(output).isEqualToIgnoringCase("Bad parameters!");
+
+    }
+
+    @Test
+    void testExitCommand() {
+        final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        String input = "exit\n";
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        Main.SCANNER = new Scanner(System.in);
         Main.main(new String[]{});
 
-        String output = out.toString();
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        String output = outputStreamCaptor.toString();
         assertTrue(output.trim().isEmpty());
     }
 }
