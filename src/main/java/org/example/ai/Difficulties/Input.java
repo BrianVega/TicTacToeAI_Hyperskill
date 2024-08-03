@@ -35,7 +35,7 @@ public class Input implements Difficulty {
                 row = Integer.parseInt(coordinates.split(" ")[0]) - 1;
                 col = Integer.parseInt(coordinates.split(" ")[1]) - 1;
                 if (row < 0 || row > 2 || col < 0 || col > 2) {
-                    System.out.println("Coordinates should be farom 1 to 3!");
+                    System.out.println("Coordinates should be from 1 to 3!");
                     row = 0;
                     col = 0;
                 } else if (board.getCell(row, col) != null) {

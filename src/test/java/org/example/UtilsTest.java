@@ -3,11 +3,21 @@ package org.example;
 import org.example.ai.Enums.Difficulties;
 import org.example.ai.Enums.Players;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 class UtilsTest {
+
+    @InjectMocks
+    Utils utils;
+
+    @Test
+    void testInstance() {
+        utils = new Utils();
+        assertThat(utils).isNotNull();
+    }
 
     @Test
     void testGetDifficultyFrom() {

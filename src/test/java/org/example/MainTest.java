@@ -1,6 +1,7 @@
 package org.example;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -9,9 +10,17 @@ import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.verify;
 
 class MainTest {
+
+    @InjectMocks
+    Main main;
+
+    @Test
+    void testInstance() {
+        main = new Main();
+        assertThat(main).isNotNull();
+    }
 
     @Test
     void testStarterWithValidParametersEasyEasy() {
