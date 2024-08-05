@@ -176,5 +176,5 @@ Commit: [_**`100d9a7`**_](https://github.com/BrianVega/TicTacToeAI_Hyperskill/co
 ![img.png](assets/SpotBugsAfter.png)
 
 ### Java Code Coverage
-In order to guarantee the code quality, 52 tests were added, covering 97% of the code. Such results can be visualized in the following report generated via the JaCoCo plugin.
+In order to guarantee the code quality, 64 tests were added, covering 100% of the code. Such results can be visualized in the following report generated via the JaCoCo plugin.
 ![img.png](assets/jacocoReport.png)
