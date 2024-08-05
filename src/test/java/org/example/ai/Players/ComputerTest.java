@@ -2,7 +2,6 @@ package org.example.ai.Players;
 
 import org.example.Game;
 import org.example.Interfaces.Difficulty;
-import org.example.Interfaces.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

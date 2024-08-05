@@ -2,9 +2,7 @@ package org.example.ai.Difficulties;
 
 import org.example.Board;
 import org.example.Game;
-import org.example.Interfaces.Difficulty;
 import org.example.Interfaces.Player;
-import org.example.Main;
 import org.example.ai.Enums.Difficulties;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,10 +37,23 @@ class InputTest {
     @Mock
     Board board;
 
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+
     @BeforeEach
     void setUp() {
         lenient().when(game.getBoard()).thenReturn(board);
         lenient().when(player.getSymbol()).thenReturn('X');
+        System.setOut(new PrintStream(outputStreamCaptor));
+    }
+
+    private void setInput(String userInput) {
+        System.setIn(new ByteArrayInputStream(userInput.getBytes()));
+        input.SCANNER = new Scanner(System.in);
+    }
+
+    private String getOutput() {
+        return outputStreamCaptor.toString().trim();
     }
 
     @Test
@@ -54,78 +65,46 @@ class InputTest {
 
     @Test
     void moveCorrectInput() {
-        String userInput = "1 1\n";
-        System.setIn(new ByteArrayInputStream(userInput.getBytes()));
+        setInput("1 1\n");
 
-        input.SCANNER = new Scanner(System.in);
-
-        given(board.getCell(anyInt(), anyInt()))
-                .willReturn(null);
+        given(board.getCell(anyInt(), anyInt())).willReturn(null);
 
         input.move(game, player);
 
-        then(board).should().setCell(0, 0 , 'X');
+        then(board).should().setCell(0, 0, 'X');
     }
 
     @Test
     void moveNotNumbers() {
-        final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStreamCaptor));
+        setInput("a\n1 1\n");
 
-        String userInput = "a\n1 1\n";
-        System.setIn(new ByteArrayInputStream(userInput.getBytes()));
-        given(board.getCell(anyInt(), anyInt()))
-                .willReturn(null);
-
-        input.SCANNER = new Scanner(System.in);
+        given(board.getCell(anyInt(), anyInt())).willReturn(null);
 
         input.move(game, player);
 
-        System.setOut(new PrintStream(outputStreamCaptor));
-
-        String output = outputStreamCaptor.toString().trim();
-        assertThat(output).contains("You should enter numbers!");
+        assertThat(getOutput()).contains("You should enter numbers!");
     }
 
     @Test
     void moveInvalidCoordinates() {
-        final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStreamCaptor));
+        setInput("0 0\n1 1\n");
 
-        String userInput = "0 0\n1 1\n";
-        System.setIn(new ByteArrayInputStream(userInput.getBytes()));
-        given(board.getCell(anyInt(), anyInt()))
-                .willReturn(null);
-
-        input.SCANNER = new Scanner(System.in);
+        given(board.getCell(anyInt(), anyInt())).willReturn(null);
 
         input.move(game, player);
 
-        System.setOut(new PrintStream(outputStreamCaptor));
-
-        String output = outputStreamCaptor.toString().trim();
-        assertThat(output).contains("Coordinates should be from 1 to 3!");
+        assertThat(getOutput()).contains("Coordinates should be from 1 to 3!");
     }
 
     @Test
-    void moveOcuppiedCell() {
-        final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStreamCaptor));
+    void moveOccupiedCell() {
+        setInput("1 1\n2 2\n");
 
-        String userInput = "1 1\n2 2\n";
-        System.setIn(new ByteArrayInputStream(userInput.getBytes()));
-        given(board.getCell(1, 1))
-                .willReturn('X');
-        given(board.getCell(2, 2))
-                .willReturn(null);
-
-        input.SCANNER = new Scanner(System.in);
+        lenient().when(board.getCell(0, 0)).thenReturn('X');
+        lenient().when(board.getCell(1, 1)).thenReturn(null);
 
         input.move(game, player);
 
-        System.setOut(new PrintStream(outputStreamCaptor));
-
-        String output = outputStreamCaptor.toString().trim();
-        assertThat(output).contains("This cell is occupied! Choose another one!");
+        assertThat(getOutput()).contains("This cell is occupied! Choose another one!");
     }
 }

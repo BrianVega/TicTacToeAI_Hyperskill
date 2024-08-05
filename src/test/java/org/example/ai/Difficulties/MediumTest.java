@@ -27,18 +27,19 @@ class MediumTest {
     Game game;
 
     @Mock
-    Player player;
+    Player playerX;
+
+    @Mock
+    Player playerO;
 
     @Mock
     Board board;
 
-    @Mock
-    Easy easy;
-
     @BeforeEach
     void setUp() {
         lenient().when(game.getBoard()).thenReturn(board);
-        lenient().when(player.getSymbol()).thenReturn('X');
+        lenient().when(playerX.getSymbol()).thenReturn('X');
+        lenient().when(playerO.getSymbol()).thenReturn('O');
     }
 
     @Test
@@ -47,22 +48,82 @@ class MediumTest {
         assertThat(difficultyLevel).isEqualTo(medium.getLevel());
     }
 
-    @DisplayName("Test Medium class move method to win the game")
+    @DisplayName("Test Medium class move method to win the game vertically")
     @Test
-    void testMoveToWin() {
-        setupBoardForWinningMove();
+    void testMoveToWinXHorizontally() {
+        setupBoardForWinningXMoveHorizontally();
 
-        medium.move(game, player);
+        medium.move(game, playerX);
+
+        verify(board).setCell(anyInt(), anyInt(), anyChar());
+    }
+
+    @DisplayName("Test Medium class move method to win the game horizontally")
+    @Test
+    void testMoveToWinXVertically() {
+        setupBoardForWinningXMoveVertically();
+
+        medium.move(game, playerX);
+
+        verify(board).setCell(anyInt(), anyInt(), anyChar());
+    }
+
+    @DisplayName("Test Medium class move method to win the game vertically")
+    @Test
+    void testMoveToWinOHorizontally() {
+        setupBoardForWinningOMoveHorizontally();
+
+        medium.move(game, playerO);
+
+        verify(board).setCell(anyInt(), anyInt(), anyChar());
+    }
+
+    @DisplayName("Test Medium class move method to win the game horizontally")
+    @Test
+    void testMoveToWinOVertically() {
+        setupBoardForWinningOMoveVertically();
+
+        medium.move(game, playerO);
 
         verify(board).setCell(anyInt(), anyInt(), anyChar());
     }
 
     @DisplayName("Test Medium class move method to block opponent")
     @Test
-    void testMoveToBlock() {
-        setupBoardForBlockingMove();
+    void testMoveToBlockOVertically() {
+        setupBoardForBlockingMoveOVertically();
 
-        medium.move(game, player);
+        medium.move(game, playerX);
+
+        verify(board).setCell(anyInt(), anyInt(), anyChar());
+    }
+
+    @DisplayName("Test Medium class move method to block opponent")
+    @Test
+    void testMoveToBlockOHorizontally() {
+        setupBoardForBlockingMoveOHorizontally();
+
+        medium.move(game, playerX);
+
+        verify(board).setCell(anyInt(), anyInt(), anyChar());
+    }
+
+    @DisplayName("Test Medium class move method to block opponent")
+    @Test
+    void testMoveToBlockXVertically() {
+        setupBoardForBlockingMoveXVertically();
+
+        medium.move(game, playerO);
+
+        verify(board).setCell(anyInt(), anyInt(), anyChar());
+    }
+
+    @DisplayName("Test Medium class move method to block opponent")
+    @Test
+    void testMoveToBlockXHorizontally() {
+        setupBoardForBlockingMoveXHorizontally();
+
+        medium.move(game, playerO);
 
         verify(board).setCell(anyInt(), anyInt(), anyChar());
     }
@@ -72,13 +133,66 @@ class MediumTest {
     void testMoveFallbackToEasy() {
         setupBoardForFallback();
 
-        medium.move(game, player);
+        medium.move(game, playerX);
 
         verify(board).setCell(anyInt(), anyInt(), anyChar());
     }
 
     // Winning setup
-    private void setupBoardForWinningMove() {
+    private void setupBoardForWinningXMoveHorizontally() {
+        lenient().when(board.getCell(0, 0)).thenReturn('X');
+        lenient().when(board.getCell(0, 1)).thenReturn('X');
+        lenient().when(board.getCell(0, 2)).thenReturn(null);
+        lenient().when(board.getRowsBoard()).thenReturn(3);
+        lenient().when(board.getColsBoard()).thenReturn(3);
+    }
+
+    // Winning setup
+    private void setupBoardForWinningXMoveVertically() {
+        lenient().when(board.getCell(0, 0)).thenReturn('X');
+        lenient().when(board.getCell(1, 0)).thenReturn('X');
+        lenient().when(board.getCell(2, 0)).thenReturn(null);
+        lenient().when(board.getRowsBoard()).thenReturn(3);
+        lenient().when(board.getColsBoard()).thenReturn(3);
+    }
+
+    // Winning setup
+    private void setupBoardForWinningOMoveHorizontally() {
+        lenient().when(board.getCell(0, 0)).thenReturn('O');
+        lenient().when(board.getCell(0, 1)).thenReturn('O');
+        lenient().when(board.getCell(0, 2)).thenReturn(null);
+        lenient().when(board.getRowsBoard()).thenReturn(3);
+        lenient().when(board.getColsBoard()).thenReturn(3);
+    }
+
+    // Winning setup
+    private void setupBoardForWinningOMoveVertically() {
+        lenient().when(board.getCell(0, 0)).thenReturn('O');
+        lenient().when(board.getCell(1, 0)).thenReturn('O');
+        lenient().when(board.getCell(2, 0)).thenReturn(null);
+        lenient().when(board.getRowsBoard()).thenReturn(3);
+        lenient().when(board.getColsBoard()).thenReturn(3);
+    }
+
+    // Blocking opportunity
+    private void setupBoardForBlockingMoveOVertically() {
+        lenient().when(board.getCell(0, 0)).thenReturn('O');
+        lenient().when(board.getCell(0, 1)).thenReturn('O');
+        lenient().when(board.getCell(0, 2)).thenReturn(null);
+        lenient().when(board.getRowsBoard()).thenReturn(3);
+        lenient().when(board.getColsBoard()).thenReturn(3);
+    }
+
+    // Blocking opportunity
+    private void setupBoardForBlockingMoveOHorizontally() {
+        lenient().when(board.getCell(0, 0)).thenReturn('O');
+        lenient().when(board.getCell(1, 0)).thenReturn('O');
+        lenient().when(board.getCell(2, 0)).thenReturn(null);
+        lenient().when(board.getRowsBoard()).thenReturn(3);
+        lenient().when(board.getColsBoard()).thenReturn(3);
+    }
+
+    private void setupBoardForBlockingMoveXVertically() {
         lenient().when(board.getCell(0, 0)).thenReturn('X');
         lenient().when(board.getCell(0, 1)).thenReturn('X');
         lenient().when(board.getCell(0, 2)).thenReturn(null);
@@ -87,10 +201,10 @@ class MediumTest {
     }
 
     // Blocking opportunity
-    private void setupBoardForBlockingMove() {
-        lenient().when(board.getCell(0, 0)).thenReturn('O');
-        lenient().when(board.getCell(0, 1)).thenReturn('O');
-        lenient().when(board.getCell(0, 2)).thenReturn(null);
+    private void setupBoardForBlockingMoveXHorizontally() {
+        lenient().when(board.getCell(0, 0)).thenReturn('X');
+        lenient().when(board.getCell(1, 0)).thenReturn('X');
+        lenient().when(board.getCell(2, 0)).thenReturn(null);
         lenient().when(board.getRowsBoard()).thenReturn(3);
         lenient().when(board.getColsBoard()).thenReturn(3);
     }

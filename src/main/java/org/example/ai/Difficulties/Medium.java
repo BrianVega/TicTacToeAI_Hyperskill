@@ -32,7 +32,7 @@ public class Medium implements Difficulty {
 
     }
 
-    private static boolean mediumMove(Board board, char move, int winOrBlock){
+    private static boolean mediumMove(Board board, char move, int winOrBlock) {
         char fillSpace = move;
         if(winOrBlock == 2){
             fillSpace = fillSpace == 'X' ? 'O' : 'X';
@@ -41,16 +41,9 @@ public class Medium implements Difficulty {
             //Horizontal
             if(mediumGameMove(board, move, fillSpace)){
                 return true;
-                // Vertical
-            } else if(mediumGameMove(board, move, fillSpace)){
-                return true;
             }
         }
-
-        if(mediumGameMove(board, move, fillSpace)){
-            return true;
-        }else
-            return mediumGameMove(board, move, fillSpace);
+        return mediumGameMove(board, move, fillSpace);
     }
 
     private static boolean mediumGameMove(Board board, Character move, char fillSpaceMove){
@@ -71,8 +64,7 @@ public class Medium implements Difficulty {
                 int x3 = Integer.parseInt(coordinates[2].split(",")[0]);
                 int y3 = Integer.parseInt(coordinates[2].split(",")[1]);
 
-                if(board.getCell(x1, y1) == move && board.getCell(x2, y2) == move
-                        && board.getCell(x3, y3) == null) {
+                if(board.getCell(x1, y1) == move && board.getCell(x2, y2) == move) {
                     board.setCell(x3, y3, fillSpaceMove);
                     return true;
                 }

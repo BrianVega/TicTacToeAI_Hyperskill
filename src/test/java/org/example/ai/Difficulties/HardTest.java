@@ -14,13 +14,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.lenient;
-import static org.mockito.Mockito.verify;
-import static org.mockito.MockitoAnnotations.initMocks;
 
 @ExtendWith(MockitoExtension.class)
 class HardTest {
@@ -36,9 +33,6 @@ class HardTest {
 
     @Mock
     Board board;
-
-    @Mock
-    Easy easy;
 
     @Mock
     PlayingStatus playingStatus;
@@ -73,37 +67,4 @@ class HardTest {
         then(board).should().setCell(anyInt(), anyInt(), eq('X'));
     }
 
-//    @DisplayName("Test move method when board is not empty")
-//    @Test
-//    void testMoveWhenBoardIsNotEmpty() {
-//        given(board.getEmptyCells()).willReturn(8);
-//
-//        int[] bestMove = {0, 0};
-//        given(hard.getBestMove(game, player)).willReturn(bestMove);
-//
-//        hard.move(game, player);
-//
-//        verify(board).setCell(0, 0, 'X');
-//    }
-//
-//    @DisplayName("Test getBestMove method")
-//    @Test
-//    void testGetBestMove() {
-//        given(board.getCell(0, 0)).willReturn(null);
-//        given(board.getCell(0, 1)).willReturn(null);
-//        given(board.getCell(0, 2)).willReturn(null);
-//        given(board.getCell(1, 0)).willReturn(null);
-//        given(board.getCell(1, 1)).willReturn(null);
-//        given(board.getCell(1, 2)).willReturn(null);
-//        given(board.getCell(2, 0)).willReturn(null);
-//        given(board.getCell(2, 1)).willReturn(null);
-//        given(board.getCell(2, 2)).willReturn(null);
-//
-//        given(hard.miniMax(game, 12, Integer.MIN_VALUE, Integer.MAX_VALUE, false, 'X')).willReturn(1);
-//
-//        int[] result = hard.getBestMove(game, player);
-//
-//        assertEquals(0, result[0]);
-//        assertEquals(0, result[1]);
-//    }
 }

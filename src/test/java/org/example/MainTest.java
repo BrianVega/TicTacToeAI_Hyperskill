@@ -41,6 +41,24 @@ class MainTest {
     }
 
     @Test
+    void testStarterWithValidParametersHardHard() {
+        final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        String input1 = "start HARD HARD\nexit\n";
+        ByteArrayInputStream in = new ByteArrayInputStream(input1.getBytes());
+        System.setIn(in);
+
+        Main.SCANNER = new Scanner(System.in);
+        Main.starter();
+
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        String output = outputStreamCaptor.toString().trim();
+        assertThat(output).contains("Making move level \"hard\"");
+    }
+
+    @Test
     void testStarterWithValidParametersMediumHard() {
         final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
